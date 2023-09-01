@@ -23,6 +23,7 @@ namespace SharpVault
     public partial class CreateVault : Window
     {
         private DataContainer _dataContainer = new DataContainer();
+        public string path;
         public CreateVault(DataContainer dataContainer)
         {
             InitializeComponent();
@@ -30,8 +31,7 @@ namespace SharpVault
             _dataContainer = dataContainer;
         }
 
-        public VaultManagement newVault = new VaultManagement();
-        public string path;
+       
         private void SelectDirectoryClick(object sender, RoutedEventArgs e)
         {
             var dialog = new VistaFolderBrowserDialog();
@@ -55,19 +55,26 @@ namespace SharpVault
 
         private void CreateVaultClick(object sender, RoutedEventArgs e)
         {
-            string vaultPath = $@"{path}\" + $"{newVaultName.Text}.svdb";
-            newVault.SetVaultName(newVaultName.Text);
-            newVault.SetMasterKey(pass1.Text);
-            newVault.SetMasterKey2(pass2.Text);
-            newVault.NewVault(vaultPath);
+            if (pass1.Text == pass2.Text)
+            {
+                if ((!string.IsNullOrEmpty(newVaultName.Text) && !string.IsNullOrEmpty(pass1.Text) && !string.IsNullOrEmpty(pass2.Text) && !string.IsNullOrEmpty(path)))
+                {
+                    string vaultPath = $@"{path}\" + $"{newVaultName.Text}.svdb";
 
-            _dataContainer.Vault = newVault;
-            _dataContainer.vaultPath = vaultPath;
+                    VaultManagement newVault = new VaultManagement(newVaultName.Text, pass1.Text);
+                    newVault.NewVault(vaultPath);
 
-            DialogResult = true;
-            MessageBox.Show(this, $"Vault {newVaultName.Text} has been successfully created.");
+                    _dataContainer.Vault = newVault;
+                    _dataContainer.vaultPath = vaultPath;
 
-            Close();
+                    DialogResult = true;
+                    MessageBox.Show(this, $"Vault {newVaultName.Text} has been successfully created.");
+
+                    Close();
+                }
+                else MessageBox.Show("All fields are required and must be filled");
+            }
+            else MessageBox.Show("Passwords do not match!");
         }
     }
 }

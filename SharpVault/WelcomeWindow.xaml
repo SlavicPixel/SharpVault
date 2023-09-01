@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SharpVault"
         mc:Ignorable="d"
-        Title="WelcomeWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="SharpVault" Height="720" Width="1280">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />
@@ -26,8 +27,8 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="3" Grid.Row="2"  Text="Welcome to SharpVault" Margin="0, 0, 0, 0" Padding="9"/>
-        <Button x:Name="newVault" Content="Create new vault" Click="newVaultClick" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Margin="0, 0, 0, 10" />
-        <Button x:Name="openVault" Content="Open existing vault" Click="openVaultClick" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" />
+        <TextBlock Grid.Column="3" Grid.Row="2"  Text="Welcome to SharpVault" Margin="0, 0, 0, 10" HorizontalAlignment="Center" FontSize="16"/>
+        <Button x:Name="newVault" Content="Create new vault" Click="newVaultClick" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Margin="0, 0, 0, 10" FontSize="16" />
+        <Button x:Name="openVault" Content="Open existing vault" Click="openVaultClick" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" FontSize="16" />
     </Grid>
 </Window>

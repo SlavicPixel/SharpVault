@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Collections.ObjectModel;
+using System.Windows;
+using Ookii.Dialogs.Wpf;
 
 namespace SharpVault
 {
@@ -15,14 +17,19 @@ namespace SharpVault
     {
         private string vaultName;
         private string masterKey;
-        private string masterKey2;
+
+        public VaultManagement(string vaultName, string masterKey)
+        {
+            this.vaultName = vaultName;
+            this.masterKey = masterKey;
+        }
+
+        public VaultManagement() { }
 
         public void SetVaultName(string vaultName) { this.vaultName= vaultName; }
         public string GetVaultName() { return vaultName; }
         public void SetMasterKey(string masterKey1) { this.masterKey= masterKey1; }
         public string GetMasterKey() { return masterKey; }
-        public void SetMasterKey2(string masterKey2) { this.masterKey2 = masterKey; }
-        public string GetMasterKey2() { return masterKey2; }
 
 
         public void NewVault(string vaultPath)
@@ -36,7 +43,7 @@ namespace SharpVault
 
         }
 
-        public string OpenVault(string vaultPath, string masterKey)
+        public string DecryptVault(string vaultPath, string masterKey)
         {
             AES aes = new AES();
 

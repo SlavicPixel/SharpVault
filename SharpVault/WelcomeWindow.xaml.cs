@@ -36,16 +36,18 @@ namespace SharpVault
 
             if ((bool)result)
             {
-                dataContainer.encrypted = true;
-                MainWindow mainWindow = new MainWindow(dataContainer, dataContainer.vaultPath);
-                mainWindow.Show();
-                Close();
+                dataContainer.decryptedVault = dataContainer.Vault.DecryptVault(dataContainer.vaultPath, dataContainer.Vault.GetMasterKey());
+                MainWindow mainWindow = new MainWindow(dataContainer);
+
+                if (mainWindow.Visibility == Visibility.Hidden) mainWindow.Visibility = Visibility.Visible;
+                else mainWindow.Show();
+
+                this.Visibility = Visibility.Hidden;
             }
         }
         
         private void openVaultClick(object sender, RoutedEventArgs e)
         {
-            VaultManagement vaultManagement = new VaultManagement();
             PasswordPrompt passwordprompt = new PasswordPrompt();
             DataContainer dataContainer = new DataContainer();
 
@@ -63,16 +65,23 @@ namespace SharpVault
                 else if (passwordprompt.ShowDialog() == true)
                 {
                     string password = passwordprompt.EnteredPassword();
-                    string decryptedVault = vaultManagement.OpenVault(dialog.FileName, password);
 
-                    if (decryptedVault != "Error")
+                    VaultManagement vaultManagement = new VaultManagement();
+                    vaultManagement.SetMasterKey(password);
+
+                    dataContainer.Vault = vaultManagement;
+                    dataContainer.decryptedVault = vaultManagement.DecryptVault(vaultPath, password);
+                    dataContainer.vaultPath = vaultPath;
+
+
+                    if (dataContainer.decryptedVault != "Error")
                     {
-                        dataContainer.decryptedVault = decryptedVault;
-                        dataContainer.encrypted = false;
-
-                        MainWindow mainWindow = new MainWindow(dataContainer, vaultPath);
-                        mainWindow.Show();
-                        Close();
+                        MainWindow mainWindow = new MainWindow(dataContainer);
+                        
+                        if (mainWindow.Visibility == Visibility.Hidden) mainWindow.Visibility = Visibility.Visible;
+                        else mainWindow.Show();
+                        
+                        this.Visibility = Visibility.Hidden;
                     }
                     else MessageBox.Show("Error while reading the database: Invalid credentials were provided, please try again.");
 

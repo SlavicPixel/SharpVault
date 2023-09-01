@@ -25,46 +25,37 @@ namespace SharpVault
         public ObservableCollection<EntryModel> entries = new ObservableCollection<EntryModel>();
         public string vaultPath = string.Empty;
         string password = string.Empty;
-        private DataContainer _dataContainer;
-        public MainWindow(DataContainer dataContainer, string vaultPath)
+        public MainWindow(DataContainer dataContainer)
         {
             InitializeComponent();
 
-            _dataContainer = dataContainer;
             VaultManagement vaultManagement = new VaultManagement();
-            this.vaultPath = vaultPath;
-
-            VaultManagement encryptedVault = _dataContainer.Vault;
-            string decryptedVault;
-
-            if (_dataContainer.encrypted)
-            {
-                decryptedVault = vaultManagement.OpenVault(vaultPath, encryptedVault.GetMasterKey());
-                password = encryptedVault.GetMasterKey();
-            } 
-            else
-            {
-                decryptedVault = dataContainer.decryptedVault;
-            }
             
-            entries = vaultManagement.InitializeVault(decryptedVault);
+            vaultPath = dataContainer.vaultPath;
+            password = dataContainer.Vault.GetMasterKey();
+
+            entries = vaultManagement.InitializeVault(dataContainer.decryptedVault);
             entriesView.ItemsSource = entries;
+
         } 
 
         private void createVaultClick(object sender, RoutedEventArgs e) 
         { 
             DataContainer dataContainer = new DataContainer();
             CreateVault createVault = new CreateVault(dataContainer);
-            createVault.ShowDialog();
+            bool? result = createVault.ShowDialog();
 
-            vaultPath = dataContainer.vaultPath;
-            VaultManagement encryptedVault = dataContainer.Vault;
-            password = encryptedVault.GetMasterKey();
-            string decryptedVault = encryptedVault.OpenVault(vaultPath, encryptedVault.GetMasterKey());
+            if ((bool)result)
+            {
+                vaultPath = dataContainer.vaultPath;
+                VaultManagement encryptedVault = dataContainer.Vault;
+                password = encryptedVault.GetMasterKey();
+                string decryptedVault = encryptedVault.DecryptVault(vaultPath, encryptedVault.GetMasterKey());
 
 
-            entries = encryptedVault.InitializeVault(decryptedVault);
-            entriesView.ItemsSource = entries;
+                entries = encryptedVault.InitializeVault(decryptedVault);
+                entriesView.ItemsSource = entries;
+            }
         }
 
         private void openVaultClick(object sender, RoutedEventArgs e)
@@ -79,17 +70,24 @@ namespace SharpVault
                 MessageBox.Show(this, "Because you are not using Windows Vista or later, the regular open file dialog will be used. Please use Windows Vista to see the new dialog.", "Sample open file dialog");
             if ((bool)dialog.ShowDialog(this))
             {
-                vaultPath = dialog.FileName;
-                string extension = System.IO.Path.GetExtension(vaultPath);
+                string extension = System.IO.Path.GetExtension(dialog.FileName);
 
-                if (extension != ".svdb") MessageBox.Show("Error while reading the database: Not a SharpVault database.");
-                else if (passwordprompt.ShowDialog() == true)
+                if (extension != ".svdb")
                 {
-                    password = passwordprompt.EnteredPassword();
-                    string decryptedVault = vaultManagement.OpenVault(dialog.FileName, password);
+                    MessageBox.Show("Error while reading the database: Not a SharpVault database.");
+                    return;
+                }
+
+                passwordprompt.ShowDialog();
+
+                if (passwordprompt.DialogResult == true)
+                {
+                    string decryptedVault = vaultManagement.DecryptVault(dialog.FileName, passwordprompt.EnteredPassword());
 
                     if (decryptedVault != "Error")
                     {
+                        vaultPath = dialog.FileName;
+                        password = passwordprompt.EnteredPassword();
                         entries = vaultManagement.InitializeVault(decryptedVault);
                         entriesView.ItemsSource = entries;
                     }
@@ -97,6 +95,18 @@ namespace SharpVault
 
                 }
             }
+        }
+
+        private void closeVaultClick(object sender, RoutedEventArgs e)
+        {
+            vaultPath = string.Empty;
+            password = string.Empty;
+            entries.Clear();
+            
+            this.Visibility = Visibility.Hidden;
+            
+            WelcomeWindow welcomeWindow = new WelcomeWindow();
+            welcomeWindow.Visibility = Visibility.Visible;
         }
 
         private void addAccountClick(object sender, RoutedEventArgs e)
@@ -115,8 +125,6 @@ namespace SharpVault
 
                 EntryModel newEntry = dataContainer.Entry;
                 entries.Add(newEntry);
-
-                Console.WriteLine(vaultPath);
 
                 vaultManagement.UpdateVault(entries, password, vaultPath);
             }
