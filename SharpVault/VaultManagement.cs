@@ -39,7 +39,11 @@ namespace SharpVault
 
             byte[] encryptedVault = aes.Encrypt(string.Empty, masterKey);
 
-            File.WriteAllBytes(vaultPath, encryptedVault);
+            try
+            {
+                File.WriteAllBytes(vaultPath, encryptedVault);
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
 
 
         }
@@ -48,11 +52,17 @@ namespace SharpVault
         {
             AES aes = new AES();
 
-            byte[] encryptedVault = File.ReadAllBytes(vaultPath);
+            try
+            {
+                byte[] encryptedVault = File.ReadAllBytes(vaultPath);
+                
+                string decryptedVault = aes.Decrypt(encryptedVault, masterKey);
 
-            string decryptedVault = aes.Decrypt(encryptedVault, masterKey);
+                return decryptedVault;
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
 
-            return decryptedVault;
+            return "Error";
         }
 
         public ObservableCollection<EntryModel> InitializeVault(string decryptedvault)
@@ -83,7 +93,12 @@ namespace SharpVault
 
             byte[] encryptedUpdatedVault = aes.Encrypt(updatedVaultJSON, masterKey);
 
-            File.WriteAllBytes($@"{vaultPath}", encryptedUpdatedVault);
+            try
+            {
+                File.WriteAllBytes($@"{vaultPath}", encryptedUpdatedVault);
+            }
+            catch (Exception e) { Console.WriteLine(e.Message); }
+            
 
         }
 
