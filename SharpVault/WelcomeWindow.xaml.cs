@@ -50,6 +50,7 @@ namespace SharpVault
         {
             PasswordPrompt passwordprompt = new PasswordPrompt();
             DataContainer dataContainer = new DataContainer();
+            VaultManagement vaultManagement = new VaultManagement();
 
             VistaOpenFileDialog dialog = new VistaOpenFileDialog();
             dialog.Filter = "All files (*.*)|*.*";
@@ -66,7 +67,7 @@ namespace SharpVault
                 {
                     string password = passwordprompt.EnteredPassword();
 
-                    VaultManagement vaultManagement = new VaultManagement();
+                    vaultManagement.SetVaultName(System.IO.Path.GetFileNameWithoutExtension(vaultPath));
                     vaultManagement.SetMasterKey(password);
 
                     dataContainer.Vault = vaultManagement;

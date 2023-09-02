@@ -16,6 +16,18 @@ namespace SharpVault
         private string url;
         private string notes;
 
+        public EntryModel(int id, string title, string username, string password, string url, string notes)
+        {
+            ID = id;
+            Title = title;
+            Username = username;
+            Password = password;
+            Url = url;
+            Notes = notes;
+        }
+
+        public EntryModel() { }
+
         public int ID
         {
             get { return id; }
@@ -74,16 +86,6 @@ namespace SharpVault
                 notes = value;
                 OnPropertyChanged(nameof(Notes));
             }
-        }
-
-        public EntryModel(int id, string title, string username, string password, string url, string notes)
-        {
-            ID = id;
-            Title = title;
-            Username = username;
-            Password = password;
-            Url = url;
-            Notes = notes;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

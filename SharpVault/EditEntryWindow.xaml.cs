@@ -49,5 +49,18 @@ namespace SharpVault
 
             Close();
         }
+
+        private void generatePasswordClick(object sender, RoutedEventArgs e)
+        {
+            PasswordGeneratorWindow passwordGeneratorWindow = new PasswordGeneratorWindow();
+            passwordGeneratorWindow.savePasswordBtn.Visibility = Visibility.Visible;
+
+            bool? result = passwordGeneratorWindow.ShowDialog();
+
+            if ((bool)result && (bool)passwordGeneratorWindow.DialogResult)
+            {
+                updatedPassword.Text = passwordGeneratorWindow.generatedPassword;
+            }
+        }
     }
 }

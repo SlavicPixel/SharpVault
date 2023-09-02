@@ -95,6 +95,16 @@
     <Compile Include="CreateVault.xaml.cs">
       <DependentUpon>CreateVault.xaml</DependentUpon>
     </Compile>
+    <Compile Include="models\Helper.cs" />
+    <Compile Include="models\LowerCaseGenerator.cs" />
+    <Compile Include="models\NumericGenerator.cs" />
+    <Compile Include="models\PasswordGenerator.cs" />
+    <Compile Include="models\SpecialCharGenerator.cs" />
+    <Compile Include="models\UpperCaseGenerator.cs" />
+    <Compile Include="PasswordGeneratorWindow.xaml.cs">
+      <DependentUpon>PasswordGeneratorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\HashCheck.cs" />
     <Compile Include="WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
@@ -110,7 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataContainer.cs" />
+    <Compile Include="Utils\DataContainer.cs" />
     <Compile Include="EditEntryWindow.xaml.cs">
       <DependentUpon>EditEntryWindow.xaml</DependentUpon>
     </Compile>
@@ -127,6 +137,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PasswordGeneratorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PasswordPrompt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,7 +151,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AES.cs" />
+    <Compile Include="Utils\AES.cs" />
     <Compile Include="NewEntry.xaml.cs">
       <DependentUpon>NewEntry.xaml</DependentUpon>
     </Compile>
@@ -171,8 +185,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utils\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

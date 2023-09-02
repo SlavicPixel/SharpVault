@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -34,7 +35,13 @@ namespace SharpVault
             vaultPath = dataContainer.vaultPath;
             password = dataContainer.Vault.GetMasterKey();
 
+            this.Title = $"{dataContainer.Vault.GetVaultName()} - SharpVault";
+
             entries = vaultManagement.InitializeVault(dataContainer.decryptedVault);
+            if (entries.Count > 0)
+            {
+                if (!vaultManagement.BackupVault(vaultPath)) MessageBox.Show("Vault is not safely opened. It is highly recommended to close the application and try again."); 
+            }
             entriesView.ItemsSource = entries;
 
         } 
@@ -87,11 +94,12 @@ namespace SharpVault
                     if (decryptedVault != "Error")
                     {
                         vaultPath = dialog.FileName;
+                        this.Title = $"{System.IO.Path.GetFileNameWithoutExtension(vaultPath)} - SharpVault";
                         password = passwordprompt.EnteredPassword();
                         entries = vaultManagement.InitializeVault(decryptedVault);
                         entriesView.ItemsSource = entries;
                     }
-                    else MessageBox.Show("Error while reading the database: Invalid credentials were provided, please try again.");
+                    else MessageBox.Show("Error while reading the database: Invalid credentials were provided or the database is corrupted, please try again.");
 
                 }
             }
@@ -130,7 +138,7 @@ namespace SharpVault
             }
         }
 
-        private void editAccountClick(object sender, RoutedEventArgs e)
+        private void editEntry()
         {
             if (entriesView.SelectedIndex != -1)
             {
@@ -164,7 +172,11 @@ namespace SharpVault
                     }
                 }
             }
+        }
 
+        private void editAccountClick(object sender, RoutedEventArgs e)
+        {
+            editEntry();
         }
 
         private void deleteAccountClick(object sender, RoutedEventArgs e)
@@ -187,6 +199,19 @@ namespace SharpVault
             }
         }
 
+        private void generatePasswordClick(object sender, RoutedEventArgs e)
+        {
+            PasswordGeneratorWindow passwordGeneratorWindow = new PasswordGeneratorWindow();
+            passwordGeneratorWindow.Show();
+        }
+
+        void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (entriesView.SelectedIndex != -1)
+            {
+                editEntry();
+            }
+        }
     }
 
 

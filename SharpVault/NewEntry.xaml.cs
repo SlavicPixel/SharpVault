@@ -27,8 +27,6 @@ namespace SharpVault
 
             _dataContainer = dataContainer;
 
-
-
         }
 
         private void newEntryClick(object sender, RoutedEventArgs e)
@@ -40,6 +38,19 @@ namespace SharpVault
             DialogResult = true;
 
             Close();
+        }
+
+        private void generatePasswordClick(object sender, RoutedEventArgs e)
+        {
+            PasswordGeneratorWindow passwordGeneratorWindow = new PasswordGeneratorWindow();
+            passwordGeneratorWindow.savePasswordBtn.Visibility = Visibility.Visible;
+
+            bool? result = passwordGeneratorWindow.ShowDialog();
+
+            if ((bool)result && (bool)passwordGeneratorWindow.DialogResult)
+            {
+                newPassword.Text = passwordGeneratorWindow.generatedPassword;
+            }
         }
     }
 }

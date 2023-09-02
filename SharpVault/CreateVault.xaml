@@ -27,14 +27,14 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="2" Grid.Row="2" Text="Vault Name:" Margin="0, 0, 10, 0" />
-        <TextBox x:Name="newVaultName" Grid.Column="3" Grid.Row="2" Margin="0, 0, 0, 10" />
-        <TextBlock Grid.Column="2" Grid.Row="3" Text="Password:" Margin="0, 0, 10, 0" />
-        <TextBox x:Name="pass1" Grid.Column="3" Grid.Row="3" Width="150" Margin="0, 0, 0, 10" />
-        <TextBlock Grid.Column="2" Grid.Row="4" Text="Confirm Password:" Margin="0, 0, 10, 0" />
-        <TextBox x:Name="pass2" Grid.Column="3" Grid.Row="4" Width="150" Margin="0, 0, 0, 10" />
-        <Button x:Name="selectDirectory" Click="SelectDirectoryClick" Content="Select a directory" Grid.Column="2" Grid.Row="5" Margin="0, 0, 10, 10" />
-        <TextBox x:Name="selectedDirectory" Grid.Column="3" Grid.Row="5" Width="150" Margin="0, 0, 0, 10" />
-        <Button x:Name="createAVault" Content="Create a vault" Click="CreateVaultClick" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" />
+        <TextBlock Grid.Column="2" Grid.Row="2" Text="Vault Name:" Margin="0, 0, 10, 0" FontSize="16" />
+        <TextBox x:Name="newVaultName" Grid.Column="3" Grid.Row="2" Margin="0, 0, 0, 10" FontSize="16"  />
+        <TextBlock Grid.Column="2" Grid.Row="3" Text="Password:" Margin="0, 0, 10, 0" FontSize="16"  />
+        <TextBox x:Name="pass1" Grid.Column="3" Grid.Row="3" Width="150" Margin="0, 0, 0, 10" FontSize="16" />
+        <TextBlock Grid.Column="2" Grid.Row="4" Text="Confirm Password:" Margin="0, 0, 10, 0" FontSize="16" />
+        <TextBox x:Name="pass2" Grid.Column="3" Grid.Row="4" Width="150" Margin="0, 0, 0, 10" FontSize="16" />
+        <Button x:Name="selectDirectory" Click="SelectDirectoryClick" Content="Select a directory" Grid.Column="2" Grid.Row="5" Margin="0, 0, 10, 10" FontSize="16" />
+        <TextBox x:Name="selectedDirectory" Grid.Column="3" Grid.Row="5" Width="150" Margin="0, 0, 0, 10" FontSize="16" />
+        <Button x:Name="createAVault" Content="Create a vault" Click="CreateVaultClick" Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" FontSize="16" />
     </Grid>
 </Window>

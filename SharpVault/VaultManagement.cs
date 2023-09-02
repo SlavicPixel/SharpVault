@@ -10,6 +10,7 @@ using System.Text.Json.Serialization;
 using System.Collections.ObjectModel;
 using System.Windows;
 using Ookii.Dialogs.Wpf;
+using SharpVault.Utils;
 
 namespace SharpVault
 {
@@ -61,7 +62,15 @@ namespace SharpVault
             {
                 return vault;
             } 
-            vault = JsonSerializer.Deserialize<ObservableCollection<EntryModel>>(decryptedvault);
+
+            try
+            {
+                vault = JsonSerializer.Deserialize<ObservableCollection<EntryModel>>(decryptedvault);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return vault;
         }
 
@@ -76,6 +85,24 @@ namespace SharpVault
 
             File.WriteAllBytes($@"{vaultPath}", encryptedUpdatedVault);
 
+        }
+
+        public bool BackupVault(string vaultPath)
+        {
+            string backupVaultPath = vaultPath + ".old";
+
+            try
+            {
+                File.Copy(vaultPath, backupVaultPath, true);
+                if (!HashCheck.CompareFileHashes(vaultPath, backupVaultPath)) return false;
+            }
+            catch (IOException iox)
+            {
+                Console.Write(iox.Message);
+                return false;
+            }
+
+            return true;
         }
     }
 

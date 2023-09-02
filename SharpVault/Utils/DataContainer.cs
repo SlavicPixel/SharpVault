@@ -14,6 +14,5 @@ namespace SharpVault
         public VaultManagement Vault { get; set; }
         public string vaultPath { get; set; }
         public string decryptedVault { get; set; }
-        public bool encrypted { get; set; }
     }
 }
