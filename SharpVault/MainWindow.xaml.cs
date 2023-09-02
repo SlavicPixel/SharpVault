@@ -40,9 +40,9 @@ namespace SharpVault
             entries = vaultManagement.InitializeVault(dataContainer.decryptedVault);
             if (entries.Count > 0)
             {
-                if (!vaultManagement.BackupVault(vaultPath)) MessageBox.Show("Vault is not safely opened. It is highly recommended to close the application and try again."); 
+                if (!vaultManagement.BackupVault(vaultPath)) MessageBox.Show("Vault is not safely opened. It is highly recommended to close the application and try again.");
+                entriesView.ItemsSource = entries;
             }
-            entriesView.ItemsSource = entries;
 
         } 
 
@@ -59,6 +59,7 @@ namespace SharpVault
                 password = encryptedVault.GetMasterKey();
                 string decryptedVault = encryptedVault.DecryptVault(vaultPath, encryptedVault.GetMasterKey());
 
+                this.Title = $"{dataContainer.Vault.GetVaultName()} - SharpVault";
 
                 entries = encryptedVault.InitializeVault(decryptedVault);
                 entriesView.ItemsSource = entries;
@@ -97,7 +98,11 @@ namespace SharpVault
                         this.Title = $"{System.IO.Path.GetFileNameWithoutExtension(vaultPath)} - SharpVault";
                         password = passwordprompt.EnteredPassword();
                         entries = vaultManagement.InitializeVault(decryptedVault);
-                        entriesView.ItemsSource = entries;
+                        if (entries.Count > 0)
+                        {
+                            if (!vaultManagement.BackupVault(vaultPath)) MessageBox.Show("Vault is not safely opened. It is highly recommended to close the application and try again.");
+                            entriesView.ItemsSource = entries;
+                        }
                     }
                     else MessageBox.Show("Error while reading the database: Invalid credentials were provided or the database is corrupted, please try again.");
 

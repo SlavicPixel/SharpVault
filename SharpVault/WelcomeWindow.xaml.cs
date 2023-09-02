@@ -84,7 +84,7 @@ namespace SharpVault
                         
                         this.Visibility = Visibility.Hidden;
                     }
-                    else MessageBox.Show("Error while reading the database: Invalid credentials were provided, please try again.");
+                    else MessageBox.Show("Error while reading the database: Invalid credentials were provided or the database is corrupted, please try again.");
 
                 }
             }
