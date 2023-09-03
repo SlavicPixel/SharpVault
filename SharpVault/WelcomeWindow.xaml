@@ -27,8 +27,8 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="3" Grid.Row="2"  Text="Welcome to SharpVault" Margin="0, 0, 0, 10" HorizontalAlignment="Center" FontSize="16"/>
-        <Button x:Name="newVault" Content="Create new vault" Click="newVaultClick" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Margin="0, 0, 0, 10" FontSize="16" />
-        <Button x:Name="openVault" Content="Open existing vault" Click="openVaultClick" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" FontSize="16" />
+        <TextBlock Grid.Column="2" Grid.Row="2"  Text="Welcome to SharpVault" Margin="0, 0, 0, 10" HorizontalAlignment="Center" FontSize="30" Grid.ColumnSpan="3" FontFamily="Segoe UI Black"/>
+        <Button x:Name="newVault" Content="Create new vault" Click="newVaultClick" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Margin="0, 0, 0, 10" FontSize="22" />
+        <Button x:Name="openVault" Content="Open existing vault" Click="openVaultClick" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" FontSize="22" />
     </Grid>
 </Window>

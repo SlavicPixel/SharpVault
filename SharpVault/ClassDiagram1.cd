@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SharpVault.CreateVault" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAiAAAAAAAAAAAAAAAACAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CreateVault.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SharpVault.EditEntryWindow" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EditEntryWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SharpVault.EntryModel" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAQAAAgEAAIQAAAAEAgAAIAAACCAAAAgAAIgA=</HashCode>
+      <FileName>EntryModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SharpVault.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="23" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAABAAAAAACACAAAgAAABAIAAAAAAAEEABgAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SharpVault.NewEntry" BaseTypeListCollapsed="true">
+    <Position X="18" Y="1" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>NewEntry.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SharpVault.PasswordGeneratorWindow" BaseTypeListCollapsed="true">
+    <Position X="22.5" Y="8" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CgEAAMAAABgAAoAAAAAAAAAAEBAIAAAAAAAAAAAAAKA=</HashCode>
+      <FileName>PasswordGeneratorWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SharpVault.PasswordPrompt" BaseTypeListCollapsed="true">
+    <Position X="13.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PasswordPrompt.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SharpVault.AES">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAEQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\AES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpVault.DataContainer">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAACAAAAAAAAAAAAAAAAAAAAAAEBAAEAAAAAAAAA=</HashCode>
+      <FileName>Utils\DataContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpVault.VaultManagement">
+    <Position X="15.75" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAYAAEAAAAAgCAAAAAAACAAAAAACgACCAgA=</HashCode>
+      <FileName>VaultManagement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpVault.WelcomeWindow" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABCAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WelcomeWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SharpVault.models.Helper">
+    <Position X="15.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAIAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>models\Helper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpVault.models.LowerCaseGenerator">
+    <Position X="5" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>models\LowerCaseGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpVault.models.NumericGenerator">
+    <Position X="7" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>models\NumericGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpVault.models.PasswordGenerator">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJAAQCAAAgAAAAAAAAAAAAAAAAAAAAAAgQAAABAAAA=</HashCode>
+      <FileName>models\PasswordGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpVault.models.SpecialCharGenerator">
+    <Position X="0.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>models\SpecialCharGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpVault.models.UpperCaseGenerator">
+    <Position X="2.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>models\UpperCaseGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SharpVault.Utils.HashCheck">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAIA=</HashCode>
+      <FileName>Utils\HashCheck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

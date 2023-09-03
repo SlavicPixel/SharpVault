@@ -41,9 +41,9 @@ namespace SharpVault
             if (entries.Count > 0)
             {
                 if (!vaultManagement.BackupVault(vaultPath)) MessageBox.Show("Vault is not safely opened. It is highly recommended to close the application and try again.");
-                entriesView.ItemsSource = entries;
+                
             }
-
+            entriesView.ItemsSource = entries;
         } 
 
         private void createVaultClick(object sender, RoutedEventArgs e) 
@@ -100,9 +100,9 @@ namespace SharpVault
                         entries = vaultManagement.InitializeVault(decryptedVault);
                         if (entries.Count > 0)
                         {
-                            if (!vaultManagement.BackupVault(vaultPath)) MessageBox.Show("Vault is not safely opened. It is highly recommended to close the application and try again.");
-                            entriesView.ItemsSource = entries;
+                            if (!vaultManagement.BackupVault(vaultPath)) MessageBox.Show("Vault is not safely opened. It is highly recommended to close the application and try again.");     
                         }
+                        entriesView.ItemsSource = entries;
                     }
                     else MessageBox.Show("Error while reading the database: Invalid credentials were provided or the database is corrupted, please try again.");
 
